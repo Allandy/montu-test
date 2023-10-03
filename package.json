@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
+    "@types/debounce": "^1.2.2",
     "animate.css": "^4.1.1",
     "classnames": "^2.3.2",
+    "debounce": "^1.2.1",
     "mdb-react-ui-kit": "^6.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
