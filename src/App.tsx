@@ -7,14 +7,16 @@ import {
   MDBInputGroup,
   MDBNavbar
 } from "mdb-react-ui-kit";
-import { useEffect, useReducer } from "react";
 import { initialState, reducer } from "./store";
 
+import { useEffect } from "react";
+import createPersistedReducer from "use-persisted-reducer";
 import { ImagesGrid } from "./ImagesGrid";
 import { IAPIGiphy } from "./interfaces";
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const usePersistedReducer = createPersistedReducer("state");
+  const [state, dispatch] = usePersistedReducer(reducer, initialState);
   const minQueryLength = 3;
 
   // initial load/reload start with trending  - restore favs - start from page 0

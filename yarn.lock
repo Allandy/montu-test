@@ -1564,6 +1564,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+use-persisted-reducer@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/use-persisted-reducer/-/use-persisted-reducer-2.1.0.tgz#7bd9f3414764879f6b7552a258b6d97edf4870f2"
+  integrity sha512-M/vnxxD2LvBKvYCuuIMte1dlshbZBHlpjTtCYL7amI0HLN1zeFvOyzRp3/RKFPgR9F/e7yDPxSQEeTeSDrGtoA==
+
 vite@^4.4.5:
   version "4.4.9"
   resolved "https://registry.yarnpkg.com/vite/-/vite-4.4.9.tgz#1402423f1a2f8d66fd8d15e351127c7236d29d3d"
