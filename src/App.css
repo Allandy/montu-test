@@ -1,0 +1,16 @@
+.giphs-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.giph-image {
+  object-fit: cover;
+  border-radius: 0.7rem;
+  margin: 0.7rem;
+  box-shadow: 0 0 0.7rem 0 rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.2s;
+}
+
+.image-container {
+  position: relative;
+}
