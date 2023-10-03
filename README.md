@@ -3,13 +3,15 @@
 yarn
 yarn dev
 
+open http://127.0.0.1:5173/
+
 # Notes
 
 Based on requirements
 
 1. On page reload call trending api and start from page 0
 2. Debounce input and min chars 3 to make query call
-3. When input is cleared via x button or deleted will call trending ap1 from page 0
+3. When input is cleared via x button or deleted will call trending api from page 0
 4. Choose lazy attribute supported by most browsers for lazy load to save time
 5. Skip tests for the moment but would normally add reducer tests and some react testing library tests
 6. could do with some refactoring esp with the pagination and switching of the endpoints logic to make it easier to follow
