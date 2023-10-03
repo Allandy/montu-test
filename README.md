@@ -1,7 +1,7 @@
 
-# to install run![Uploading app-giphy.gif…]()
+![Uploading app-giphy.gif…]()
 
-
+# to install run
 yarn
 yarn dev
 
