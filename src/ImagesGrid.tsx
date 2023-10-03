@@ -1,10 +1,17 @@
+import classNames from "classnames";
+import { MDBIcon } from "mdb-react-ui-kit";
+import { useState } from "react";
 import { IGiphyImage } from "./interfaces";
+import { Action } from "./store";
 
 interface ImagesGridProps {
   images: IGiphyImage[];
+
+  dispatch: React.Dispatch<Action>;
 }
 
-export const ImagesGrid = ({ images }: ImagesGridProps) => {
+export const ImagesGrid = ({ images, dispatch }: ImagesGridProps) => {
+  const [favClickedId, setFavClickedId] = useState("");
   return (
     <>
       <section className="giphs-layout">
@@ -17,6 +24,19 @@ export const ImagesGrid = ({ images }: ImagesGridProps) => {
               height={200}
               loading="lazy"
               className="giph-image"
+            />
+            <MDBIcon
+              icon="heart"
+              className={classNames({
+                "heart-icon": true,
+                "heart-icon--active": image.fav,
+                "animate__animated animate__heartBeat":
+                  favClickedId === image.id && image.fav
+              })}
+              onClick={() => {
+                dispatch({ type: "toggle-fav", payload: image.id });
+                setFavClickedId(image.id);
+              }}
             />
           </div>
         ))}

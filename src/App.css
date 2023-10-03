@@ -14,3 +14,15 @@
 .image-container {
   position: relative;
 }
+
+.heart-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: beige;
+  cursor: pointer;
+}
+
+.heart-icon--active {
+  color: #ff0000;
+}

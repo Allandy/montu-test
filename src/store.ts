@@ -47,6 +47,21 @@ export const reducer = (state: IState, action: Action): IState => {
     case "set-query": {
       return { ...state, query: action.payload };
     }
+    case "toggle-fav": {
+      const updFavs = [...state.favs];
+      const favIdx = updFavs.findIndex((fav) => fav === action.payload);
+      if (favIdx !== -1) {
+        updFavs.splice(favIdx, 1);
+      } else {
+        updFavs.push(action.payload);
+      }
+
+      return {
+        ...state,
+        images: mapFavorites(state.images, updFavs),
+        favs: updFavs
+      };
+    }
 
     default:
       return initialState;
