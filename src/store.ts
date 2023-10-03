@@ -11,7 +11,7 @@ export const initialState: IState = {
   images: [],
   query: "",
   pageOffset: 0,
-  limit: 10,
+  limit: 25,
   favs: [],
   resource: "trending"
 };

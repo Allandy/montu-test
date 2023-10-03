@@ -116,17 +116,16 @@ function App() {
             />
           </MDBInputGroup>
         </MDBContainer>
-        <MDBContainer>
-          <ImagesGrid images={state.images} dispatch={dispatch} />
-          <MDBBtn
-            onClick={() => dispatch({ type: "get-next-page" })}
-            className="me-1"
-          >
-            Load More...
-          </MDBBtn>
-        </MDBContainer>
       </MDBNavbar>
-      <MDBContainer></MDBContainer>
+      <MDBContainer>
+        <ImagesGrid images={state.images} dispatch={dispatch} />
+        <MDBBtn
+          onClick={() => dispatch({ type: "get-next-page" })}
+          className="me-1"
+        >
+          Load More...
+        </MDBBtn>
+      </MDBContainer>
     </>
   );
 }
