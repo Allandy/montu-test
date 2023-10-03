@@ -1,6 +1,11 @@
 import "./App.css";
 
-import { MDBContainer, MDBInputGroup, MDBNavbar } from "mdb-react-ui-kit";
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBInputGroup,
+  MDBNavbar
+} from "mdb-react-ui-kit";
 import { useEffect, useReducer } from "react";
 import { initialState, reducer } from "./store";
 
@@ -9,6 +14,8 @@ import { IAPIGiphy } from "./interfaces";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const minQueryLength = 3;
+
   // initial load/reload start with trending  - restore favs - start from page 0
   useEffect(() => {
     // in dev mode react calls this twice when in strict mode
@@ -34,6 +41,37 @@ function App() {
     };
   }, []);
 
+  // load more button press works on both trending and search api resource
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        let apiResource = "";
+
+        if (state.query.length === 0) {
+          apiResource = "trending";
+        } else {
+          apiResource = "search";
+        }
+
+        if (state.query.length < minQueryLength && apiResource == "search")
+          return;
+
+        if (state.pageOffset === 0) return;
+
+        const baseUurl = `https://api.giphy.com/v1/gifs/${apiResource}?api_key=F3piKmQWp1YMUAQYbIrxDjDdznT9rFR3&`;
+        const url = `${baseUurl}q=${state.query}&offset=${state.pageOffset}&limit=${state.limit}&rating=g&lang=en`;
+        const response = await fetch(url);
+        const { data } = (await response.json()) as IAPIGiphy;
+
+        dispatch({ type: "concat-images", payload: data });
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    fetchImages();
+  }, [state.pageOffset]);
+
   return (
     <>
       <MDBNavbar light bgColor="light" sticky>
@@ -49,6 +87,12 @@ function App() {
         </MDBContainer>
         <MDBContainer>
           <ImagesGrid images={state.images} />
+          <MDBBtn
+            onClick={() => dispatch({ type: "get-next-page" })}
+            className="me-1"
+          >
+            Load More...
+          </MDBBtn>
         </MDBContainer>
       </MDBNavbar>
       <MDBContainer></MDBContainer>

@@ -36,10 +36,14 @@ export const reducer = (state: IState, action: Action): IState => {
       };
     }
     case "get-next-page": {
-      // to-do
-      return { ...state };
+      return { ...state, pageOffset: state.pageOffset + state.limit };
     }
-
+    case "concat-images": {
+      return {
+        ...state,
+        images: state.images.concat(mapFavorites(action.payload, state.favs))
+      };
+    }
     case "set-query": {
       return { ...state, query: action.payload };
     }
